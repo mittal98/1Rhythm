@@ -21,6 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
+  exports:[
+    CardComponent
+  ],
   providers:[
   
   ]

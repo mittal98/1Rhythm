@@ -29,19 +29,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.artistData();
-    this.carouselData();
-
+    
   }
-  carouselData() {
-    this.carouselService.getCarouselData().subscribe(res => {
-      this.carouselAllData = res.slice((res.length - 2), res.length).reverse();
-      this.carouselService.getArtistData().subscribe(res => {
-        this.artistAllData = res.slice((res.length - 2), res.length).reverse();
-        this.mergeImage = this.carouselAllData.concat(this.artistAllData);
-      })
-    })
-  }
-
+  
 
   artistData() {
     this.carouselService.getArtistData().subscribe(res => {
