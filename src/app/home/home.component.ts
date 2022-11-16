@@ -10,17 +10,13 @@ import { CarouselService } from './carousel.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  public carouselAllData: any = []
-  public lastTwoImage: any = []
   public lastArtistImage: any = []
   public mergeImage: any = []
   public artistAllData: any = []
   public lastFiveData: any = []
-  public artistFiveData: any = []
-
-  constructor(config: NgbCarouselConfig,
-    private carouselService: CarouselService) {
+  public artisFiveData: any = []
+  images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  constructor(config: NgbCarouselConfig, private carouselService: CarouselService) {// customize default values of carousels used by this component tree
     config.interval = 7000;
     config.wrap = true;
     config.keyboard = false;
@@ -29,16 +25,21 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.artistData();
-    
+
   }
-  
+
 
   artistData() {
-    this.carouselService.getArtistData().subscribe(res => {
-      this.artistFiveData = res;
-      this.lastFiveData = this.artistFiveData.slice((this.artistFiveData.length - 5), this.artistFiveData.length).reverse()
+    this.carouselService.getArtistImage().subscribe(res => {
+      this.artisFiveData = res;
+      this.lastFiveData = this.artisFiveData.slice((this.artisFiveData.length - 5), this.artisFiveData.length).reverse()
     })
-    console.log(this.carouselAllData['img']);
-    
   }
+
+  // public getArtistFiveImage(event: any) {
+  //   this.lastFiveData = event.slice(-5);
+
+  // }
+
+
 }

@@ -8,14 +8,13 @@ import { Observable } from 'rxjs';
 export class CarouselService {
 
   constructor(private http: HttpClient) { }
-  getCarouselData(): Observable<any[]> {
-    
-    return this.http.get<any[]>("http://localhost:3000/carousel")
+  getCarouselData(): Observable<any> {
+    return this.http.get("http://localhost:3000/carosusel")
   }
- 
-  
-  getArtistData():Observable<any[]>{
-    return this.http.get<any[]>("http://localhost:3000/artist")
+  getStuidoImage(): Observable<any> {
+    return this.http.get("http://localhost:3000/studio")
   }
-
+  getArtistImage(): Observable<any> {
+    return this.http.get("http://localhost:3000/artist")
+  }
 }
