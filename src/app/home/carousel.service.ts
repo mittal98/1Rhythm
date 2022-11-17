@@ -11,7 +11,7 @@ export class CarouselService {
   getCarouselData(): Observable<any> {
     return this.http.get("http://localhost:3000/carosusel")
   }
-  getStuidoImage(): Observable<any> {
+  getStudioImage(): Observable<any> {
     return this.http.get("http://localhost:3000/studio")
   }
   getArtistImage(): Observable<any> {

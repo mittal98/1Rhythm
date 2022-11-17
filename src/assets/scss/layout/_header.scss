@@ -19,12 +19,23 @@
     pointer-events: none;
     color: #aaa;
 }
-.container-fluid {
-    margin-right: 80px;
-    margin-left: 80px;
-    padding-right: 0;
-    padding-left: 0;
+
+@media (max-width:766px) {
+    #toggleHeader {
+        margin-top: 20px;
+    }
+
+    ul {
+        margin-left: -20px;
+
+    }
+
+    .dropdown {
+        margin-top: 8px;
+    }
+
 }
+
 .navbar {
     label {
         cursor: pointer;

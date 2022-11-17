@@ -4,3 +4,20 @@ $link-decoration : none;
 
 $btn-font-family : 'Roboto', sans-serif;
 
+
+$card-border-width: 0px;
+
+// variables used for carousel
+$carousel-border-radius: 14px;
+$carousel-img-height: 350px;
+$carousel-font-size: 36px;
+
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  xxxl: 1800px
+);

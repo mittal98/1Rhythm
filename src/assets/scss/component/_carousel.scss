@@ -1,31 +1,20 @@
 .carousel-wrapper {
-    border-radius: 14px;
-    margin: 0 0;
-
+    border-radius: $carousel-border-radius;
     .picsum-img-wrapper {
-        height: 350px;
-        position: relative;
-
+        height: $carousel-img-height;
         img {
-            height: 100%;
             object-fit: cover;
-            // object-position: bottom;
         }
     }
 
     .carousel-text-wrapper {
         background: linear-gradient(to right, #0D0F14 55%, transparent);
-        position: absolute;
-        top: 0;
-        height: 100%;
-        width: 55%;
-        border-radius: 14px;
-
+        border-radius: $carousel-border-radius;
         .carousel-text {
             margin: 53px 0 0 53px;
 
             .crtext {
-                font-size: 36px;
+                font-size: $carousel-font-size;
                 font-weight: bold;
             }
 
@@ -33,21 +22,19 @@
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 text-overflow: ellipsis;
-                // line-height: 50%;
                 -webkit-box-orient: vertical;
                 width: 100%;
                 overflow: hidden;
             }
 
             .crtext-role {
-                // color: transparent !important;
-                font-size: 36px;
+                font-size: $carousel-font-size;
                 font-weight: bold;
                 background: -webkit-linear-gradient(right, #2D6DD5, #35B5C8);
                 background-clip: text;
                 -webkit-background-clip: text;
                 -webkit-text-stroke: 2.5px transparent;
-                color: #0D0F14 !important;
+                color: #0D0F14;
             }
 
             .btn {
@@ -60,84 +47,6 @@
     }
 }
 
-.card-title-wrapper {
-    background: linear-gradient(180deg, #F9F7F7 0%, rgba(249, 247, 247, 0) 100%);
-    padding: 0 80px;
-    margin-top: 40px;
-
-    .explore-text {
-        font-weight: 600;
-        font-size: 34px;
-        margin: 42px 0 38px 0;
-    }
-
-    .see-all-text {
-        font-size: 16px;
-        font-weight: 600;
-        // color: $text-primary;
-    }
-}
-
-.Explore-studio {
-    // height: 626px;
-    // background: linear-gradient(180deg, #F9F7F7 0%, rgba(249, 247, 247, 0) 100%);
-    padding: 0 80px;
-    // margin-top: 40px;
-
-
-
-    .cards {
-        // margin-right: 0px;
-        margin-bottom: 65px;
-    }
-}
-
-/* responsive */
-@include media-breakpoint-down(xxl) {
-    .cards:nth-last-child(-n+1) {
-        display: none;
-    }
-
-    // .cards:nth-last-child(-n+2) {
-    //     margin-right: -12px;
-    // }
-
-    // .cards:not(:last-child) {
-    //     // margin-right: 12px;
-    // }
-
-    .Explore-studio {
-        margin-right: -12px;
-    }
-}
-
-
-@include media-breakpoint-down(xl) {
-    // .cards:nth-child(even) {
-    //     margin-right: -12px;
-    // }
-}
-
-
-@include media-breakpoint-down(lg) {
-    .cards:nth-last-child(-n+1) {
-        display: none;
-    }
-
-    .carousel-wrapper {
-
-
-        .carousel-text-wrapper {
-            height: 100%;
-            width: 80%;
-        }
-    }
-
-    // .cards:nth-last-child(-n+2) {
-    //     margin-right: -12px;
-    // }
-}
-
 @include media-breakpoint-down(md) {
     .cards:nth-last-child(-n+3) {
         display: none;
@@ -145,7 +54,7 @@
 
     .carousel-wrapper {
         // height: 250px;
-        margin: 0 0;
+        margin: 0 30px;
 
         .picsum-img-wrapper {
             height: 250px
@@ -186,17 +95,13 @@
 
     }
 
-    .card-title-wrapper,
-    .Explore-studio {
-        padding: 0 30px;
-    }
 
 }
 
 @include media-breakpoint-down(sm) {
     .carousel-wrapper {
         // height: 250px;
-        margin: 0 0;
+        margin: 0 30px;
 
         .picsum-img-wrapper {
             height: 250%

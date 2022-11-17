@@ -1,21 +1,26 @@
-<div class="main-wrapper overflow-auto h-100">
-    <div class="row gx-0">
-        <div class="col">
-            <ngb-carousel class="col carouselwrapper overflow-hidden" [showNavigationArrows]="false" *ngIf="images">
-                <ng-template ngbSlide *ngFor="let event of lastFiveData">
-                    <div class="picsum-img-wrapper">
-                        <img class="w-100" src="{{event.img}}" alt="Random first slide" />
+<section class="bg-white pb-4">
+    <div class="container">
+        <div class="row gx-0">
+            <ngb-carousel class="col carousel-wrapper overflow-hidden" [showNavigationArrows]="false">
+                <ng-template ngbSlide *ngFor="let event of mergeImage">
+                    <div class="picsum-img-wrapper position-relative">
+                        <img class="w-100 img-fluid h-100" src="{{event.img}}" alt="Random first slide" />
                     </div>
-                    <div class="carousel-text-wrapper ">
+                    <div class="carousel-text-wrapper w-60 position-absolute top-0 h-100">
                         <div class="carousel-text text-white">
                             <h5>MOST POPULAR</h5>
-                            <span class="text-white crtext">CREATIVE SPACE </span> <span
+                            <span class="text-white crtext">{{event.eventLocation + " "}}</span> <span
                                 class="text-white crtext-role">STUDIO</span>
-                            <h4 class="text-truncate description">Lorem ipsum dolor, sit amet consectetur adipisicing
+                            <h4 class="truncate-overflow description">Lorem ipsum dolor, sit amet
+                                consectetur
+                                adipisicing
                                 elit.
                                 Distinctio minima dolorem
                                 ullam,
-                                officiis quibusdam libero magnam adipisci.</h4>
+                                officiis quibusdam libero magnam adipisci. Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Quibusdam explicabo ullam quam facilis eius, pariatur, ipsum
+                                repudiandae minus, inventore eligendi eos assumenda sint voluptatum tempore. Aliquid
+                                dignissimos laudantium autem maxime.</h4>
                             <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center">View
                                 Details</a>
                         </div>
@@ -24,28 +29,36 @@
             </ngb-carousel>
         </div>
     </div>
- <!-- Explore Studio -->
- <div class="card-title-wrapper row gx-0 d-flex justify-content-between">
-    <div class="d-flex justify-content-between align-items-center">
-        <span class="explore-text text-nowrap">Explore Studio</span>
-        <span class="see-all-text text-primary text-nowrap">SEE ALL</span>
+</section>
+
+<!-- Explore Studio -->
+<section class="card-title-wrapper pt-4">
+    <div class="container">
+        <div class=" d-flex justify-content-between align-items-center pb-4">
+            <span class="explore-text text-nowrap">Explore Studio</span>
+            <span class="see-all-text text-primary text-nowrap">SEE ALL</span>
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="col-xxl-2 col-xl-3 col-md-6 col-xs-12 cards pb-4" *ngFor="let studio of studioFiveData">
+                <app-card [data]="studio"> </app-card>
+            </div>
+        </div>
     </div>
-</div>
-<div class="Explore-studio row gx-0 d-flex justify-content-between">
-    <div class="col-xxl-2 col-xl-3 col-lg-6 col-md-6  col-xs-12 cards" *ngFor="let event of [1,2,3,4,5]">
-        <app-card></app-card>
-    </div>
-</div>
+</section>
+
 <!-- Explore Artist -->
-<div class="card-title-wrapper row gx-0 d-flex justify-content-between">
-    <div class="d-flex justify-content-between align-items-center">
+<div class="card-title-wrapper pt-4">
+    <div class="container">
+    <div class="d-flex justify-content-between align-items-center pb-4">
         <span class="explore-text text-nowrap">Explore Artist</span>
         <span class="see-all-text text-primary text-nowrap">SEE ALL</span>
     </div>
-</div>
-<div class="Explore-studio row gx-0 d-flex justify-content-between">
-    <div class="col-xxl-2 col-xl-3 col-lg-6 col-md-6 col-xs-12 cards" *ngFor="let event of [1,2,3,4,5]">
-        <app-card></app-card>
+
+    <div class="row justify-content-between">
+        <div class="col-xxl-2 col-xl-3 col-md-6 col-xs-12 cards pb-4" *ngFor="let artist of artistFiveData">
+            <app-card [data]="artist"></app-card>
+        </div>
     </div>
 </div>
 </div>
