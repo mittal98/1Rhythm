@@ -59,3 +59,35 @@
         }
     }
 }
+
+.nav-list .nav-link:hover,
+.nav-list .nav-link.active {
+    background-color: lighten($color: $primary, $amount: 60%);
+    transition: .25s all;
+    font-weight: 500;
+    color: $primary;
+}
+
+.nav-link:hover .icon,
+.nav-link:hover .nav-text {
+    color: $primary;
+
+}
+
+.nav-link .icon,
+.nav-link .nav-text {
+    color: black;
+}
+
+.nav-link {
+
+    &.active,
+    &:hover {
+
+
+        .icon,
+        .nav-text {
+            color: $primary;
+        }
+    }
+}
