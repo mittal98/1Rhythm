@@ -1,18 +1,21 @@
-$font-family-base : 'Inter', sans-serif;
+$font-family-base : 'Inter',
+sans-serif;
 
 $link-decoration : none;
 
-$btn-font-family : 'Roboto', sans-serif;
+$btn-font-family : 'Roboto',
+sans-serif;
 
 
 $card-border-width: 0px;
+
 
 // variables used for carousel
 $carousel-border-radius: 14px;
 $carousel-img-height: 350px;
 $carousel-font-size: 36px;
 
-
+$dropdown-min-width :12rem;
 $container-max-widths: (
   sm: 540px,
   md: 720px,
