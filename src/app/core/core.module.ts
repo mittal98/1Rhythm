@@ -5,22 +5,30 @@ import { HeaderComponent } from './navbar/header/header.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
   declarations: [
     MasterComponent,
     HeaderComponent,
-    
+
   ],
   imports: [
     CommonModule,
     RouterModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbCarouselModule,
+    HttpClientModule,
+
   ],
-  exports:[
-    MasterComponent,HeaderComponent
-  ]
+  providers: [
+
+  ],
+  exports: [MasterComponent, HeaderComponent]
+
 })
 export class CoreModule { }

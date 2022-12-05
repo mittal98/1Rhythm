@@ -7,6 +7,7 @@ import { ManageStudioProfileComponent } from './manage-studio-profile/manage-stu
 import { StudioBookingFormComponent } from './studio-booking-form/studio-booking-form.component';
 import { StudioDescriptionComponent } from './studio-description/studio-description.component';
 import { StudioListComponent } from './studio-list/studio-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { StudioListComponent } from './studio-list/studio-list.component';
   ],
   imports: [
     CommonModule,
-    StudioRoutingModule
+    StudioRoutingModule,
+    HttpClientModule
   ]
 })
 export class StudioModule { }

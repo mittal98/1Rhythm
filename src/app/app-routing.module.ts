@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MasterComponent } from './core/master/master.component';
 import { HomeComponent } from './home/home.component';
+import { BookingHistoryComponent } from './shared/booking-history/booking-history.component';
+import { ManageProfileComponent } from './shared/manage-profile/manage-profile.component';
 
 const routes: Routes = [
   {
@@ -36,7 +38,16 @@ const routes: Routes = [
   {
     path: 'registration',
     loadChildren: () => import('./user/registration/registration.module').then(m => m.RegistrationModule)
-  }];
+  },
+  {
+    path: 'booking-history',
+    component: BookingHistoryComponent
+  },
+  {
+    path: 'manage-profile',
+    component: ManageProfileComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

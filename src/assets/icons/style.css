@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?6a8fgr');
-  src:  url('fonts/icomoon.eot?6a8fgr#iefix') format('embedded-opentype'),
+  src: url('fonts/icomoon.eot?6a8fgr');
+  src: url('fonts/icomoon.eot?6a8fgr#iefix') format('embedded-opentype'),
     url('fonts/icomoon.ttf?6a8fgr') format('truetype'),
     url('fonts/icomoon.woff?6a8fgr') format('woff'),
     url('fonts/icomoon.svg?6a8fgr#icomoon') format('svg');
@@ -10,10 +10,11 @@
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
-  speak: never;
+  /* speak: never; */
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -28,54 +29,70 @@
 .icon-Heart:before {
   content: "\e901";
 }
+
 .icon-Microphone:before {
   content: "\e902";
 }
+
 .icon-Close:before {
   content: "\e903";
 }
+
 .icon-Delete:before {
   content: "\e904";
 }
+
 .icon-Music:before {
   content: "\e905";
 }
+
 .icon-Calender:before {
   content: "\e906";
 }
+
 .icon-Tools:before {
   content: "\e907";
 }
+
 .icon-Prices:before {
   content: "\e908";
 }
+
 .icon-Address:before {
   content: "\e909";
 }
+
 .icon-Add .path1:before {
   content: "\e90b";
   color: rgb(13, 15, 20);
 }
+
 .icon-Add .path2:before {
   content: "\e90c";
   margin-left: -1.0419921875em;
   color: rgb(255, 255, 255);
 }
+
 .icon-Right-arrow:before {
   content: "\e90e";
 }
+
 .icon-Left-arrow:before {
   content: "\e90f";
 }
+
 .icon-Group-1:before {
   content: "\e910";
 }
+
 .icon-Group:before {
   content: "\e911";
 }
+
 .icon-Studios:before {
   content: "\e912";
 }
+
 .icon-Home:before {
   content: "\e913";
 }

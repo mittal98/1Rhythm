@@ -6,6 +6,8 @@ import { PhoneMaskingDirective } from './directives/phone-masking.directive';
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { UserTypeService } from './services/user-type.service';
+import { ToasterService } from './services/toastr/toaster.service';
 
 
 
@@ -21,11 +23,12 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
-  exports:[
+  exports: [
     CardComponent
   ],
-  providers:[
-  
+  providers: [
+    UserTypeService,
+    ToasterService
   ]
 })
 export class SharedModule { }

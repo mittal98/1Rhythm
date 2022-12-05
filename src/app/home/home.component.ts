@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { CarouselService } from './carousel.service';
+import { artistData } from '../artist/artist.model';
+import { ArtistService } from '../artist/service/artist.service';
+import { StudioService } from '../studio/service/studio.service';
+import { studio } from '../studio/studio.model';
+
 
 
 @Component({
@@ -10,64 +15,155 @@ import { CarouselService } from './carousel.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public lastArtistImage: any = []
-  public mergeImage: any = []
-  public artistAllData: any = []
-  public lastFiveData: any = []
-  public artistFiveData: any = []
 
-  public carosuelFourImage: any = []
-  public studioTwoImage: any = []
-  public artistTwoImage: any = []
-  public studioFiveData: any = []
 
-  images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  constructor(config: NgbCarouselConfig, private carouselService: CarouselService) {// customize default values of carousels used by this component tree
-    config.interval = 7000;
-    config.wrap = true;
-    config.keyboard = false;
-    config.pauseOnHover = false;
+  public artistRecentSixData: any;
+  public studioRecentSixData: any;
+  public studioRecentData: any
+  public artistRecentData: any;
+  public carouselData: any;
+
+  public roleType!: any;
+
+  //------------
+  public showArtist: boolean;
+  public showStudio: boolean;
+
+  constructor(private studioService: StudioService, private artistService: ArtistService, private router: Router) {
+
+    // this.artistRecentSixData = [];
+    this.studioRecentSixData = [];
+
+    //-show artist and studio
+    this.showArtist = false
+    this.showStudio = false
   }
 
   ngOnInit(): void {
-    this.CarouselData();
-    this.artistData();
-    this.studioData();
+    this.showStudioAndArtist();
+    this.getCarouselData();
+    this.getStudioData();
+    this.getArtistData();
+
+    //----fake-localstorage
+    this.roleType = localStorage.getItem("RoleType")
   }
 
+  /**
+   * @author : Ayush Dhimmar
+   * show and hide studio and artist functionality according to roleType
+   */
+  showStudioAndArtist() {
+    if (this.roleType == "Studio Owner") {
+      this.showArtist = true;
+    }
+    else if (this.roleType == "Artist") {
+      this.showStudio = true;
+    }
+    else if (this.roleType == "General User") {
+      this.showArtist = true;
+      this.showStudio = true
+    }
+  }
+  /**
+   * @author : Ayush Dhimmar
+ * get recently added six data of artist
+ */
+  getArtistData() {
+    this.artistService.getArtistData().subscribe((response: artistData[]) => {
+      console.log(response);
 
-  CarouselData() {
-    this.carouselService.getStudioImage().subscribe(res => {
-      this.studioTwoImage  = res.slice(-2).reverse();
+      this.artistRecentSixData = response
+        .map(item => {
+          return {
+            id: item.artistId,
+            name: item.artistName,
+            description: item.artistType,
+            image: item.artistImage,
+            typeId: 2
+          }
+        }).slice(0, 6);
+    })
+  }
 
-      this.carouselService.getArtistImage().subscribe(res => {
-        // get last-two ArtistData from Database
-        this.artistTwoImage = res.slice(-2).reverse();
-        // this.artistAllData = res.slice((res.length - 2), res.length).reverse();
+  /**
+  /** 
+   * @author : Charvi Sarang
+   * Get recently added six data of studio 
+   */
+  getStudioData() {
+    this.studioService.getStudioData().subscribe((result: studio[]) => {
+      this.studioRecentSixData = result.map(item => {
+        return {
+          id: item.studioId,
+          name: item.studioName,
+          description: item.studioAddress,
+          image: item.studioImage,
+          typeId: 1
+        }
+      }).slice(0, 6);
+    });
+  }
+  /**
+   * to show data in carousel according to the usertype
+   * @author : Nikunj Patel
+   */
+  getCarouselData() {
+    //---- Get recently added data of studio -----//
+    this.studioService.getStudioData().subscribe((res: studio[]) => {
 
-        // this.lastArtistImage = this.artistAllData.slice((this.artistAllData.length - 2), this.artistAllData.length).reverse();
+      this.studioRecentData = res.map(item => {
+        return {
+          image: item.studioImage,
+          description: item.studioAddress,
+          name: item.studioName,
+          role: "STUDIO",
+          typeId: 1
+        }
+      });
 
-        // merge twoArray to show Both Data
 
-        this.mergeImage = (this.studioTwoImage.concat(this.artistTwoImage));
+      //---- Get recently added data of artist -----//
+      this.artistService.getArtistData().subscribe((res: artistData[]) => {
+        this.artistRecentData = res.map(item => {
+          return {
+            image: item.artistImage,
+            description: item.artistType,
+            name: item.artistName,
+            role: "ARTIST",
+            typeId: 2
+          }
+        });
+
+        /**
+         *   toshow the data according the different type of user
+         */
+        if (this.roleType == "Studio Owner") {
+          this.carouselData = this.artistRecentData.slice(0, 4)
+          console.log(this.carouselData);
+        }
+        else if (this.roleType == "Artist") {
+          this.carouselData = this.studioRecentData.slice(0, 4)
+        }
+        else if (this.roleType == "General User") {
+          this.carouselData = ((this.studioRecentData.slice(0, 2)).concat(this.artistRecentData.slice(0, 2)))
+        }
       })
-
-    })
-  }
-  artistData() {
-    this.carouselService.getArtistImage().subscribe(res => {
-      this.artistFiveData = res.slice(-6).reverse();
-      // this.lastFiveData = this.artisFiveData.slice(-5).reverse()
-      // this.lastFiveData = this.artisFiveData.slice((this.artisFiveData.length - 5), this.artisFiveData.length).reverse()
-    })
-    // console.log(this.carouselAllData['img']);
-  }
-
-  studioData() {
-    this.carouselService.getArtistImage().subscribe(res => {
-      this.studioFiveData = res.slice(-6).reverse();
     })
   }
 
-
+  /** 
+     * @author : Charvi Sarang
+     * Get recently added six data of studio 
+     */
+  // Navigating the Studio-List Page
+  onStudioList() {
+    this.router.navigate(["studio/studio-list"]);
+  }
+  // Navigating the Artist-List Page
+  onArtistList() {
+    this.router.navigate(["artist/artist-list"]);
+  }
 }
+
+
